@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+.gitignore
+out
+gen
+/diamond_config_data.log
+dubbo-registry
+/dubbo-registry
+diamond_config_data.log
+*/target
+*/build
+.gradle

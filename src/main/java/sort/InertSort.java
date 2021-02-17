@@ -6,6 +6,7 @@ import utils.JsonUtils;
  * @author dinglingfeng
  * @version 2021/2/17
  * @since JDK1.7
+ * 插入排序
  */
 public class InertSort {
 

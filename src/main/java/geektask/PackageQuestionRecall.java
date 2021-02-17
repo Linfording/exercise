@@ -14,14 +14,17 @@ import java.util.stream.Collectors;
  * 现在我们有 n 个物品，每个物品的重量不等，并且不可分割。
  * 我们现在期望选择几件物品，装载到背包中。
  * 在不超过背包所能装载重量的前提下，如何让背包中物品的总重量最大？
+ * 回溯解包裹
  */
 public class PackageQuestionRecall {
 
     public static void main(String[] args) {
-        int totalWeigh = 100;
-        int[] items = {10, 30, 40, 80, 40, 80, 10};
+//        int totalWeigh = 100;
+//        int[] items = {10, 30, 40, 80, 40, 80, 10};
+        int totalWeigh = 9;
+        int[] items = {2, 2, 4, 6, 3};
         final PackageQuestionRecall packageQuestion = new PackageQuestionRecall();
-        packageQuestion.f(0, 0, items, items.length, 100, new ArrayList<>());
+        packageQuestion.f(0, 0, items, items.length, totalWeigh, new ArrayList<>());
         System.out.println(JsonUtils.toJsonString(packageQuestion.effectItemsMap.get(packageQuestion.maxW)));
         System.out.println(packageQuestion.maxW);
     }

@@ -5,12 +5,14 @@
  */
 public class TestT {
     public static void main(String[] args) {
-//        int[] items = {2, 2, 4, 6, 3};// 物品的重量
-//        int[] values = {3, 4, 8, 9, 6}; // 物品的价值
-        int[] items = {2, 2};// 物品的重量
-        int[] values = {3, 4}; // 物品的价值
-        final int knapsack = new TestT().knapsack(items, values, 2, 9);
+        int[] items = {2, 2, 4, 6, 3};// 物品的重量
+        int[] values = {3, 4, 8, 9, 6}; // 物品的价值
+//        int[] items = {2, 2};// 物品的重量
+//        int[] values = {3, 4}; // 物品的价值
+        final int knapsack = new TestT().knapsack(items, values, items.length, 9);
+        final int knapsack3 = new TestT().knapsack3(items, values, items.length, 9);
         System.out.println(knapsack);
+        System.out.println(knapsack3);
     }
 
 
@@ -31,6 +33,7 @@ public class TestT {
                 if (states[i - 1][j] >= 0) states[i][j] = states[i - 1][j];
             }
             for (int j = 0; j <= w - weight[i]; ++j) {//把第i个物品放入背包
+//                如果不判断 v 是不是最大的，会出现不是最优解的情况
 //                if (states[i - 1][j] > 0) states[i][j + weight[i]] = states[i - 1][j] + value[i];
                 if (states[i-1][j] >= 0) {
                     int v = states[i-1][j] + value[i];

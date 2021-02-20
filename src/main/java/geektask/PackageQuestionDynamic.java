@@ -11,4 +11,41 @@ package geektask;
  * 动态规划解包裹
  */
 public class PackageQuestionDynamic {
+
+    public static void main(String[] args) {
+        // 物品的重量
+        int[] items = {2, 2, 4, 6, 3};
+        int totalWeigh = 9;
+        final PackageQuestionDynamic packageQuestionDynamic = new PackageQuestionDynamic();
+        final int knapsack = packageQuestionDynamic.knapsack(items, items.length, totalWeigh);
+        System.out.println(knapsack);
+    }
+
+    /**
+     * @return 不超重量的情况下的最多重量
+     * @items: 商品重量
+     * @n:物品个数
+     * @w:背包总重量
+     */
+    public int knapsack(int[] weight, int n, int w) {
+        boolean[][] state = new boolean[n][w + 1];
+        state[0][0] = true;
+        if (weight[0] < w) {
+            state[0][weight[0]] = true;
+        }
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j <= w; j++) {
+                if (state[i - 1][j] == true) state[i][j] = state[i - 1][j];
+            }
+            for (int j = 0; j <= w - weight[i]; j++) {
+                if (state[i - 1][j] == true) state[i][j + weight[i]] = true;
+            }
+        }
+        for (int i = w; i >= 0; i--) {
+            if (state[n - 1][i] == true) return i;
+        }
+        return 0;
+    }
+
+
 }
